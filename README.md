@@ -5,5 +5,5 @@ Proof of Concept:
 
 Script Exploiting WordPress Flaws by sending request same as normal user does trough normal browser.
 
-# Feature Request
-I hope you guys have idea, send me trough Issues or fray117sys@gmail.com 
+# Contribution
+I'm open to any contribution through pull requests, or if just wanted drop idea to issues are welcomed.
