@@ -24,6 +24,7 @@ class wordforce {
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_USERAGENT, $this->random_ua());
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		// Setting up Cookie Jar
 		curl_setopt($ch, CURLOPT_COOKIEJAR, $filename);
 				
@@ -46,6 +47,7 @@ class wordforce {
 		curl_setopt($ch, CURLOPT_POSTFIELDS, 'log=' . $username . '&pwd=' . $password);
 		curl_setopt($ch, CURLOPT_USERAGENT, $this->random_ua());
 		curl_setopt($ch, CURLOPT_COOKIEFILE, $filename);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
 		// Make Request
 		$result = curl_exec($ch);
